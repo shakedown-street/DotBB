@@ -1,0 +1,40 @@
+# Ignore build outputs
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs
+*.log
+
+# Visual Studio Code
+.vscode/
+
+# Dependency directories
+node_modules/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Rider IDE files
+.idea/
+*.iml
+
+# JetBrains Rider settings
+.idea/
+
+# Resharper settings
+*.DotSettings.user
+
+# Backup files
+*.bak
+*.swp
+
+# Other
+.DS_Store
+Thumbs.db
