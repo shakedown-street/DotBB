@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using DotBB.Data;
 using DotBB.Models;
 
 namespace DotBB.Controllers;
@@ -7,15 +8,18 @@ namespace DotBB.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly DotBBDbContext _context;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger, DotBBDbContext context)
     {
         _logger = logger;
+        _context = context;
     }
 
     public IActionResult Index()
     {
-        return View();
+        var categories = _context.Categories.ToList();
+        return View(categories);
     }
 
     public IActionResult Privacy()
