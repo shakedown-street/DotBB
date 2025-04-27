@@ -19,7 +19,11 @@ public class HomeController : Controller
     public IActionResult Index()
     {
         var categories = _context.Categories.ToList();
-        return View(categories);
+        var viewModel = new IndexViewModel
+        {
+            Categories = categories
+        };
+        return View(viewModel);
     }
 
     public IActionResult Privacy()

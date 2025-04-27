@@ -24,7 +24,7 @@ namespace DotBB.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("DotBB.Models.Category", b =>
+            modelBuilder.Entity("DotBB.Data.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -48,7 +48,7 @@ namespace DotBB.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("DotBB.Models.Subcategory", b =>
+            modelBuilder.Entity("DotBB.Data.Subcategory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -81,9 +81,9 @@ namespace DotBB.Migrations
                     b.ToTable("Subcategories");
                 });
 
-            modelBuilder.Entity("DotBB.Models.Subcategory", b =>
+            modelBuilder.Entity("DotBB.Data.Subcategory", b =>
                 {
-                    b.HasOne("DotBB.Models.Category", "Category")
+                    b.HasOne("DotBB.Data.Category", "Category")
                         .WithMany("Subcategories")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -92,7 +92,7 @@ namespace DotBB.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("DotBB.Models.Category", b =>
+            modelBuilder.Entity("DotBB.Data.Category", b =>
                 {
                     b.Navigation("Subcategories");
                 });
