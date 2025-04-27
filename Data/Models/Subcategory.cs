@@ -9,3 +9,5 @@ public class Subcategory
   public int Order { get; set; }
   public Category Category { get; set; }
 }
+
+// INSERT INTO "Subcategories" ("Name", "Slug", "Description", "Order", "CategoryId") VALUES ('Announcements', 'announcements', 'Annoucements about DotBB', 1, 2);
