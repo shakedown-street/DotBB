@@ -13,6 +13,6 @@ I will be attempting to build a bulletin board system with the following feature
 - User registration
 - User login
 - Thread and post creation
-- BBCode formatting
+- BBCode or Markdown formatting
 - Real time shoutbox
 - Admin and moderator features
