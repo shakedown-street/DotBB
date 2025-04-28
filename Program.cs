@@ -41,9 +41,4 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.MapControllerRoute(
-    name: "subcategory",
-    pattern: "Subcategory/{id:int}"
-);
-
 app.Run();
