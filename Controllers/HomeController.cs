@@ -8,9 +8,9 @@ namespace DotBB.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly DotBBDbContext _context;
+    private readonly DotBBContext _context;
 
-    public HomeController(DotBBDbContext context)
+    public HomeController(DotBBContext context)
     {
         _context = context;
     }

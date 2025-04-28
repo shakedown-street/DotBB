@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace DotBB.Migrations
 {
-    [DbContext(typeof(DotBBDbContext))]
+    [DbContext(typeof(DotBBContext))]
     [Migration("20250428182408_RemoveSlug")]
     partial class RemoveSlug
     {

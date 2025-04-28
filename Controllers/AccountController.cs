@@ -9,9 +9,9 @@ namespace DotBB.Controllers;
 
 public class AccountController : Controller
 {
-    private readonly DotBBDbContext _context;
+    private readonly DotBBContext _context;
 
-    public AccountController(DotBBDbContext context)
+    public AccountController(DotBBContext context)
     {
         _context = context;
     }

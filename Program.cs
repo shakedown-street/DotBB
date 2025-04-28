@@ -5,7 +5,7 @@ using DotBB.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 
-builder.Services.AddDbContext<DotBBDbContext>(options =>
+builder.Services.AddDbContext<DotBBContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Add services to the container.

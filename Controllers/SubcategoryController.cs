@@ -7,9 +7,9 @@ namespace DotBB.Controllers;
 
 public class SubcategoryController : Controller
 {
-    private readonly DotBBDbContext _context;
+    private readonly DotBBContext _context;
 
-    public SubcategoryController(DotBBDbContext context)
+    public SubcategoryController(DotBBContext context)
     {
         _context = context;
     }

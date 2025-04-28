@@ -9,8 +9,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace DotBB.Migrations
 {
-    [DbContext(typeof(DotBBDbContext))]
-    partial class DotBBDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(DotBBContext))]
+    partial class DotBBContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {

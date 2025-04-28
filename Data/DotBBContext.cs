@@ -2,9 +2,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DotBB.Data;
 
-public class DotBBDbContext : DbContext
+public class DotBBContext : DbContext
 {
-    public DotBBDbContext(DbContextOptions<DotBBDbContext> options) : base(options) { }
+    public DotBBContext(DbContextOptions<DotBBContext> options) : base(options) { }
 
     public DbSet<User> Users { get; set; }
     public DbSet<Category> Categories { get; set; }
