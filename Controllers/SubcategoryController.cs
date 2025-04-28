@@ -14,11 +14,16 @@ public class SubcategoryController : Controller
         _context = context;
     }
 
-    public IActionResult Details(int id)
+    public async Task<IActionResult> Details(int? id)
     {
-        var subcategory = _context.Subcategories
+        if (id == null)
+        {
+            return NotFound();
+        }
+
+        var subcategory = await _context.Subcategories
             .Include(s => s.Category)
-            .FirstOrDefault(s => s.Id == id);
+            .FirstOrDefaultAsync(s => s.Id == id);
 
         if (subcategory == null)
         {
