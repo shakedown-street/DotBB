@@ -7,4 +7,6 @@ public class User
   public byte[] PasswordHash { get; set; }
   public byte[] PasswordSalt { get; set; }
   public bool IsSuperuser { get; set; }
+  public ICollection<Thread> Threads { get; set; }
+  public ICollection<Post> Posts { get; set; }
 }

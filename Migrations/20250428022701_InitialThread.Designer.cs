@@ -2,6 +2,7 @@
 using DotBB.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DotBB.Migrations
 {
     [DbContext(typeof(DotBBDbContext))]
-    partial class DotBBDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250428022701_InitialThread")]
+    partial class InitialThread
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,33 +46,6 @@ namespace DotBB.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
-                });
-
-            modelBuilder.Entity("DotBB.Data.Post", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int>("ThreadId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ThreadId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Posts");
                 });
 
             modelBuilder.Entity("DotBB.Data.Subcategory", b =>
@@ -164,25 +140,6 @@ namespace DotBB.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("DotBB.Data.Post", b =>
-                {
-                    b.HasOne("DotBB.Data.Thread", "Thread")
-                        .WithMany("Posts")
-                        .HasForeignKey("ThreadId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DotBB.Data.User", "User")
-                        .WithMany("Posts")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Thread");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("DotBB.Data.Subcategory", b =>
                 {
                     b.HasOne("DotBB.Data.Category", "Category")
@@ -223,15 +180,8 @@ namespace DotBB.Migrations
                     b.Navigation("Threads");
                 });
 
-            modelBuilder.Entity("DotBB.Data.Thread", b =>
-                {
-                    b.Navigation("Posts");
-                });
-
             modelBuilder.Entity("DotBB.Data.User", b =>
                 {
-                    b.Navigation("Posts");
-
                     b.Navigation("Threads");
                 });
 #pragma warning restore 612, 618

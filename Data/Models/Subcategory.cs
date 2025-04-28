@@ -8,6 +8,7 @@ public class Subcategory
   public string Description { get; set; }
   public int Order { get; set; }
   public Category Category { get; set; }
+  public ICollection<Thread> Threads { get; set; }
 }
 
 // INSERT INTO "Subcategories" ("Name", "Slug", "Description", "Order", "CategoryId") VALUES ('Announcements', 'announcements', 'Annoucements about DotBB', 1, 2);
