@@ -2,18 +2,21 @@
     ViewData["Title"] = "Login";
 }
 
-<h1>Login</h1>
-
-<form class="pw-form" method="post" asp-action="Login">
-    <div class="pw-form-group">
-        <label class="pw-input-label" for="username">Username</label>
-        <input class="pw-input" type="text" id="username" name="username" required />
+<div class="pw-card centerPage">
+    <div class="pw-card-header">Login</div>
+    <div class="pw-card-content">
+        <form class="pw-form" method="post" asp-action="Login">
+            <div class="pw-form-group">
+                <label class="pw-input-label" for="username">Username</label>
+                <input class="pw-input fluid" type="text" id="username" name="username" required />
+            </div>
+            <div class="pw-form-group">
+                <label class="pw-input-label" for="password">Password</label>
+                <input class="pw-input fluid" type="password" id="password" name="password" required />
+            </div>
+            <div class="pw-form-actions">
+                <button class="pw-button fluid primary raised" type="submit">Login</button>
+            </div>
+        </form>
     </div>
-    <div class="pw-form-group">
-        <label class="pw-input-label" for="password">Password</label>
-        <input class="pw-input" type="password" id="password" name="password" required />
-    </div>
-    <div class="pw-form-actions">
-        <button class="pw-button primary raised" type="submit">Login</button>
-    </div>
-</form>
+</div>

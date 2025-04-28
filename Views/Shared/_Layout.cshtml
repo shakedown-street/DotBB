@@ -11,31 +11,57 @@
 </head>
 
 <body>
-    <header class="pw-container">
-        <nav>
-            <a asp-area="" asp-controller="Home" asp-action="Index">DotBB</a>
-            @if (User.Identity.IsAuthenticated)
-            {
-                <a asp-controller="Account" asp-action="Logout">Logout</a>
-            }
-            else
-            {
-                <a asp-controller="Account" asp-action="Register">Register</a>
-                <a asp-controller="Account" asp-action="Login">Login</a>
-            }
-        </nav>
-    </header>
+    <div class="layout">
+        <header>
+            <nav class="nav">
+                <div class="nav__upper">
+                    <div class="pw-container">
+                        <div class="nav__upper__content">
+                            <div class="nav__spacer"></div>
+                            <div class="nav__upper__links">
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <a class="nav__upper__link" asp-controller="Account" asp-action="Logout">Logout</a>
+                                }
+                                else
+                                {
+                                    <a class="nav__upper__link" asp-controller="Account" asp-action="Register">Register</a>
+                                    <a class="nav__upper__link" asp-controller="Account" asp-action="Login">Login</a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav__main">
+                    <div class="pw-container">
+                        <div class="nav__main__content">
+                            <a class="nav__title" asp-area="" asp-controller="Home" asp-action="Index">DotBB</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
 
-    <main class="pw-container my-8">
-        @RenderBody()
-    </main>
+        <main class="main">
+            <div class="pw-container">
+                @RenderBody()
+            </div>
+        </main>
 
-    <footer class="pw-container">
-        <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-        <div class="pw-container">
-            &copy; 2025 - DotBB
-        </div>
-    </footer>
+        <footer>
+            <div class="footer">
+                <div class="pw-container">
+                    @* <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET
+                        Core</a>.</p> *@
+                    <div class="footer__content">
+                        <div>Powered by <a href="https://github.com/shakedown-street/DotBB" target="_blank">DotBB</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

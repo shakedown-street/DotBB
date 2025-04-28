@@ -2,22 +2,25 @@
     ViewData["Title"] = "Register";
 }
 
-<h1>Register</h1>
-
-<form class="pw-form" method="post" asp-action="Register">
-    <div class="pw-form-group">
-        <label class="pw-input-label" for="username">Username</label>
-        <input class="pw-input" type="text" id="username" name="username" required />
+<div class="pw-card centerPage">
+    <div class="pw-card-header">Register</div>
+    <div class="pw-card-content">
+        <form class="pw-form" method="post" asp-action="Register">
+            <div class="pw-form-group">
+                <label class="pw-input-label" for="username">Username</label>
+                <input class="pw-input fluid" type="text" id="username" name="username" required />
+            </div>
+            <div class="pw-form-group">
+                <label class="pw-input-label" for="password1">Password</label>
+                <input class="pw-input fluid" type="password" id="password1" name="password1" required />
+            </div>
+            <div class="pw-form-group">
+                <label class="pw-input-label" for="password2">Password (Again)</label>
+                <input class="pw-input fluid" type="password" id="password2" name="password2" required />
+            </div>
+            <div class="pw-form-actions">
+                <button class="pw-button fluid primary raised" type="submit">Register</button>
+            </div>
+        </form>
     </div>
-    <div class="pw-form-group">
-        <label class="pw-input-label" for="password1">Password</label>
-        <input class="pw-input" type="password" id="password1" name="password1" required />
-    </div>
-    <div class="pw-form-group">
-        <label class="pw-input-label" for="password2">Password (Again)</label>
-        <input class="pw-input" type="password" id="password2" name="password2" required />
-    </div>
-    <div class="pw-form-actions">
-        <button class="pw-button primary raised" type="submit">Register</button>
-    </div>
-</form>
+</div>
