@@ -6,30 +6,32 @@
 
 @foreach (var category in Model.Categories)
 {
-    <table>
-        <thead>
-            <tr>
-                <th>@category.Name</th>
-                <th>Threads</th>
-                <th>Posts</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var subcategory in category.Subcategories)
-            {
-                <tr>
-                    <td>
-                        <a asp-controller="Subcategory" asp-action="Details" asp-route-id="@subcategory.Id">
-                            @subcategory.Name
-                        </a>
-                        <p>@subcategory.Description</p>
-                    </td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <div class="pw-card fluid mb-4">
+        <div class="pw-table-container">
+            <table class="pw-table">
+                <thead>
+                    <tr>
+                        <th>@category.Name</th>
+                        <th>Threads</th>
+                        <th>Posts</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var subcategory in category.Subcategories)
+                    {
+                        <tr>
+                            <td>
+                                <a asp-controller="Subcategory" asp-action="Details" asp-route-id="@subcategory.Id">
+                                    @subcategory.Name
+                                </a>
+                                <p>@subcategory.Description</p>
+                            </td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 }
