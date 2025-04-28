@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DotBB.Migrations
 {
     [DbContext(typeof(DotBBDbContext))]
-    [Migration("20250428022054_InitialUser")]
+    [Migration("20250428022307_InitialUser")]
     partial class InitialUser
     {
         /// <inheritdoc />
@@ -79,6 +79,34 @@ namespace DotBB.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Subcategories");
+                });
+
+            modelBuilder.Entity("DotBB.Data.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsSuperuser")
+                        .HasColumnType("boolean");
+
+                    b.Property<byte[]>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("bytea");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .IsRequired()
+                        .HasColumnType("bytea");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("DotBB.Data.Subcategory", b =>
