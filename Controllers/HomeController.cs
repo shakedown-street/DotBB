@@ -17,7 +17,10 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        var categories = _context.Categories.Include(c => c.Subcategories).ToList();
+        var categories = _context.Categories
+            .Include(c => c.Subcategories)
+            .ThenInclude(s => s.Threads)
+            .ToList();
         var viewModel = new IndexViewModel
         {
             Categories = categories

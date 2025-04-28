@@ -17,7 +17,7 @@ public class SubcategoryController : Controller
     public IActionResult Details(int id)
     {
         var subcategory = _context.Subcategories
-            .Include(s => s.Category) // Include related Category
+            .Include(s => s.Category)
             .FirstOrDefault(s => s.Id == id);
 
         if (subcategory == null)
