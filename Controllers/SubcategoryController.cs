@@ -7,29 +7,29 @@ namespace DotBB.Controllers;
 
 public class SubcategoryController : Controller
 {
-  private readonly DotBBDbContext _context;
+    private readonly DotBBDbContext _context;
 
-  public SubcategoryController(DotBBDbContext context)
-  {
-    _context = context;
-  }
-
-  public IActionResult Details(int id)
-  {
-    var subcategory = _context.Subcategories
-        .Include(s => s.Category) // Include related Category
-        .FirstOrDefault(s => s.Id == id);
-
-    if (subcategory == null)
+    public SubcategoryController(DotBBDbContext context)
     {
-      return NotFound();
+        _context = context;
     }
 
-    var viewModel = new SubcategoryViewModel
+    public IActionResult Details(int id)
     {
-      Subcategory = subcategory
-    };
+        var subcategory = _context.Subcategories
+            .Include(s => s.Category) // Include related Category
+            .FirstOrDefault(s => s.Id == id);
 
-    return View(viewModel);
-  }
+        if (subcategory == null)
+        {
+            return NotFound();
+        }
+
+        var viewModel = new SubcategoryViewModel
+        {
+            Subcategory = subcategory
+        };
+
+        return View(viewModel);
+    }
 }
