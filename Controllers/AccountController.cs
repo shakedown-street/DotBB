@@ -1,9 +1,9 @@
 using System.Security.Cryptography;
-using Microsoft.AspNetCore.Mvc;
-using DotBB.Data;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc;
+using DotBB.Data;
 
 namespace DotBB.Controllers;
 

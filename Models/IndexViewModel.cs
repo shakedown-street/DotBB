@@ -1,6 +1,6 @@
-namespace DotBB.Models;
-
 using DotBB.Data;
+
+namespace DotBB.Models;
 
 public class IndexViewModel
 {

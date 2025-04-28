@@ -1,5 +1,6 @@
-namespace DotBB.Data;
 using Microsoft.EntityFrameworkCore;
+
+namespace DotBB.Data;
 
 public class DotBBDbContext : DbContext
 {
