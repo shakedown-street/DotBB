@@ -14,6 +14,15 @@
     <header class="pw-container">
         <nav>
             <a asp-area="" asp-controller="Home" asp-action="Index">DotBB</a>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a asp-controller="Account" asp-action="Logout">Logout</a>
+            }
+            else
+            {
+                <a asp-controller="Account" asp-action="Register">Register</a>
+                <a asp-controller="Account" asp-action="Login">Login</a>
+            }
         </nav>
     </header>
 
