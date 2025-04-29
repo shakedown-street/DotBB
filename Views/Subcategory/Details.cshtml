@@ -5,3 +5,8 @@
 @model DotBB.Models.SubcategoryViewModel;
 
 <h1>@Model.Subcategory.Name</h1>
+
+<a class="pw-button primary raised" asp-area="" asp-controller="Thread" asp-action="Create"
+    asp-route-subcategoryId="@Model.Subcategory.Id">
+    Create Thread
+</a>
