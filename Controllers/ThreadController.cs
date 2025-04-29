@@ -3,6 +3,7 @@ using DotBB.Data;
 using DotBB.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace DotBB.Controllers;
 
@@ -67,12 +68,39 @@ public class ThreadController : Controller
             };
             _context.Threads.Add(thread);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Details", "Subcategory", new { id = subcategory.Id });
+            return RedirectToAction("Details", "Thread", new { id = thread.Id });
         }
 
         var model = new ThreadCreateViewModel
         {
             Subcategory = subcategory
+        };
+
+        return View(model);
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> Details(int id)
+    {
+        var thread = await _context.Threads
+            .Include(t => t.User)
+            .ThenInclude(t => t.Threads)
+            .ThenInclude(t => t.Posts)
+            .Include(t => t.Subcategory)
+            .Include(t => t.Posts)
+            .ThenInclude(p => p.User)
+            .FirstOrDefaultAsync(t => t.Id == id);
+
+        if (thread == null)
+        {
+            return NotFound();
+        }
+
+        var model = new ThreadDetailsViewModel
+        {
+            Thread = thread,
+            User = thread.User,
+            Subcategory = thread.Subcategory
         };
 
         return View(model);

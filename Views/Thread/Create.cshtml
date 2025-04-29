@@ -4,17 +4,39 @@
     ViewData["Title"] = "Create Thread";
 }
 
-<form class="pw-form" method="post" asp-action="Create">
-    <input type="hidden" name="subcategoryId" value="@Model.Subcategory.Id" />
-    <div class="pw-form-group">
-        <label class="pw-input-label" for="title">Title</label>
-        <input class="pw-input fluid" type="text" id="title" name="title" required />
+<nav>
+    <ul class="pw-breadcrumb">
+        <li class="pw-breadcrumb-item">
+            <a class="pw-breadcrumb-link" href="@Url.Action("Index", "Home")">Home</a>
+        </li>
+        <li class="pw-breadcrumb-item">
+            <a class="pw-breadcrumb-link"
+                href="@Url.Action("Details", "Subcategory", new { id = Model.Subcategory.Id })">
+                @Model.Subcategory.Name
+            </a>
+        </li>
+        <li class="pw-breadcrumb-item active">
+            Create Thread
+        </li>
+    </ul>
+</nav>
+
+<div class="pw-card">
+    <div class="pw-card-header">Create Thread</div>
+    <div class="pw-card-content">
+        <form class="pw-form" method="post" asp-action="Create">
+            <input type="hidden" name="subcategoryId" value="@Model.Subcategory.Id" />
+            <div class="pw-form-group">
+                <label class="pw-input-label" for="title">Title</label>
+                <input class="pw-input fluid" type="text" id="title" name="title" required />
+            </div>
+            <div class="pw-form-group">
+                <label class="pw-input-label" for="content">Content</label>
+                <textarea class="pw-input fluid" id="content" name="content" required></textarea>
+            </div>
+            <div class="pw-form-actions end">
+                <button class="pw-button primary raised" type="submit">Create Thread</button>
+            </div>
+        </form>
     </div>
-    <div class="pw-form-group">
-        <label class="pw-input-label" for="content">Content</label>
-        <textarea class="pw-input fluid" id="content" name="content" required></textarea>
-    </div>
-    <div class="pw-form-actions">
-        <button class="pw-button fluid primary raised" type="submit">Create Thread</button>
-    </div>
-</form>
+</div>

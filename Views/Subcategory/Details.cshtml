@@ -4,9 +4,55 @@
 
 @model DotBB.Models.SubcategoryViewModel;
 
-<h1>@Model.Subcategory.Name</h1>
+<nav>
+    <ul class="pw-breadcrumb">
+        <li class="pw-breadcrumb-item">
+            <a class="pw-breadcrumb-link" href="@Url.Action("Index", "Home")">Home</a>
+        </li>
+        <li class="pw-breadcrumb-item active">
+            @Model.Subcategory.Name
+        </li>
+    </ul>
+</nav>
 
-<a class="pw-button primary raised" asp-area="" asp-controller="Thread" asp-action="Create"
+<a class="pw-button primary ghost" asp-area="" asp-controller="Thread" asp-action="Create"
     asp-route-subcategoryId="@Model.Subcategory.Id">
     Create Thread
 </a>
+
+<div class="pw-card my-4">
+    <div class="pw-table-container">
+        <table class="pw-table">
+            <colgroup>
+                <col />
+                <col width="96px" />
+                <col width="192px" />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Posts</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var thread in Model.Subcategory.Threads)
+                {
+                    <tr>
+                        <td>
+                            <div>
+                                <a href="@Url.Action("Details", "Thread", new { id = thread.Id })">
+                                    @thread.Title
+                                </a>
+                            </div>
+                            <div>@thread.User.Username</div>
+                        </td>
+                        <td>@thread.PostCount</td>
+                        <td></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>

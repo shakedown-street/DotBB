@@ -9,4 +9,5 @@ public class User
     public bool IsSuperuser { get; set; }
     public ICollection<Thread> Threads { get; set; }
     public ICollection<Post> Posts { get; set; }
+    public int PostCount => Threads?.Count ?? 0 + Posts?.Count ?? 0;
 }

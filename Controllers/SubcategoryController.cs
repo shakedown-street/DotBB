@@ -23,6 +23,9 @@ public class SubcategoryController : Controller
 
         var subcategory = await _context.Subcategories
             .Include(s => s.Category)
+            .Include(s => s.Threads)
+            .ThenInclude(t => t.User)
+            .ThenInclude(t => t.Posts)
             .FirstOrDefaultAsync(s => s.Id == id);
 
         if (subcategory == null)
