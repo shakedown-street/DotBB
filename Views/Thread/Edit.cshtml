@@ -1,0 +1,46 @@
+@model Thread
+
+@{
+    ViewData["Title"] = "Edit Thread";
+}
+
+<nav>
+    <ul class="pw-breadcrumb">
+        <li class="pw-breadcrumb-item">
+            <a class="pw-breadcrumb-link" href="@Url.Action("Index", "Home")">Home</a>
+        </li>
+        <li class="pw-breadcrumb-item">
+            <a class="pw-breadcrumb-link"
+                href="@Url.Action("Details", "Subcategory", new { id = Model.Subcategory.Id })">
+                @Model.Subcategory.Name
+            </a>
+        </li>
+        <li class="pw-breadcrumb-item">
+            <a class="pw-breadcrumb-link" href="@Url.Action("Details", "Thread", new { id = Model.Id })">
+                @Model.Title
+            </a>
+        </li>
+        <li class="pw-breadcrumb-item active">
+            Edit
+        </li>
+    </ul>
+</nav>
+
+<div class="pw-card">
+    <div class="pw-card-header">Edit Thread</div>
+    <div class="pw-card-content">
+        <form class="pw-form" asp-action="Edit" asp-route-id="@Model.Id">
+            <div class="pw-form-group">
+                <label class="pw-input-label" for="title">Title</label>
+                <input class="pw-input fluid" type="text" id="title" name="title" value="@Model.Title" required />
+            </div>
+            <div class="pw-form-group">
+                <label class="pw-input-label" for="content">Content</label>
+                <textarea class="pw-input fluid" id="content" name="content" required>@Model.Content</textarea>
+            </div>
+            <div class="pw-form-actions end">
+                <button class="pw-button primary raised" type="submit">Save</button>
+            </div>
+        </form>
+    </div>
+</div>

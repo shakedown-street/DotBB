@@ -31,12 +31,12 @@ public class ThreadController : Controller
             return NotFound();
         }
 
-        var model = new ThreadCreateViewModel
+        var viewModel = new ThreadCreateViewModel
         {
             Subcategory = subcategory
         };
 
-        return View(model);
+        return View(viewModel);
     }
 
     [HttpPost]
@@ -70,12 +70,12 @@ public class ThreadController : Controller
             return RedirectToAction("Details", "Thread", new { id = thread.Id });
         }
 
-        var model = new ThreadCreateViewModel
+        var viewModel = new ThreadCreateViewModel
         {
             Subcategory = subcategory
         };
 
-        return View(model);
+        return View(viewModel);
     }
 
     [HttpGet]
@@ -103,5 +103,66 @@ public class ThreadController : Controller
         };
 
         return View(model);
+    }
+
+    [HttpGet]
+    [Authorize]
+    public async Task<IActionResult> Edit(int id)
+    {
+        var thread = await _context.Threads
+            .Include(t => t.Subcategory)
+            .Include(t => t.User)
+            .FirstOrDefaultAsync(t => t.Id == id);
+
+        if (thread == null)
+        {
+            return NotFound();
+        }
+
+        return View(thread);
+    }
+
+    [HttpPost]
+    [Authorize]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Edit(int id, string title, string content)
+    {
+        var thread = await _context.Threads
+            .FirstOrDefaultAsync(t => t.Id == id);
+
+        if (thread == null)
+        {
+            return NotFound();
+        }
+
+        if (ModelState.IsValid)
+        {
+            try
+            {
+                thread.Title = title;
+                thread.Content = content;
+                thread.UpdatedAt = DateTime.UtcNow;
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ThreadExists(thread.Id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return RedirectToAction("Details", new { id = thread.Id });
+        }
+
+        return View(thread);
+    }
+
+    private bool ThreadExists(int id)
+    {
+        return _context.Threads.Any(e => e.Id == id);
     }
 }
