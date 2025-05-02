@@ -22,7 +22,7 @@
                             <div class="nav__upper__links">
                                 @if (User.Identity.IsAuthenticated)
                                 {
-                                    <form method="POST" asp-controller="Account" asp-action="Logout">
+                                    <form asp-controller="Account" asp-action="Logout">
                                         <button class="nav__upper__link" type="submit">Logout</button>
                                     </form>
                                 }
