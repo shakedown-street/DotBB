@@ -41,6 +41,7 @@ public class ThreadController : Controller
 
     [HttpPost]
     [Authorize]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(int subcategoryId, string title, string content)
     {
         var subcategory = await _context.Subcategories.FindAsync(subcategoryId);
@@ -57,8 +58,6 @@ public class ThreadController : Controller
 
         if (ModelState.IsValid)
         {
-
-
             var thread = new Data.Thread
             {
                 Title = title,

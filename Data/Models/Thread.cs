@@ -8,7 +8,6 @@ public class Thread
     public string Title { get; set; }
     public string Content { get; set; }
     public ICollection<Post> Posts { get; set; }
-
     public int PostCount => Posts?.Count ?? 0;
 }
 
